@@ -14,7 +14,7 @@ function Pizza({ addToCart }) {
       <ul className={s.pizzaList}>
         {products.map((pizza) => (
           <li className={s.pizzaListItem} key={pizza.id}>
-            <img width="280px" height="280px" className={s.pizzaListItem__image} src={pizza.image} alt={pizza.title} loading="lazy"/>
+            <img loading='lazy' width="280px" height="280px" className={s.pizzaListItem__image} src={pizza.image} alt={pizza.title} />
             <div className={s.pizzaListItem__container}>
                 <p className={s.pizzaListItem__title}>{pizza.title}</p>
                 <p className={s.pizzaListItem__description}>{pizza.description}</p>

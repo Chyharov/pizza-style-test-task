@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Header from './Header/Header';
 import Pizza from 'pages/Pizza/Pizza';
 import Cart from 'pages/Cart/Cart';
+import Home from 'pages/Home/Home';
 
 export const App = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -19,7 +20,8 @@ export const App = () => {
     <Router>
       <Header/>
       <Routes>
-        <Route path="/" element={<Pizza addToCart={addToCart} />} />
+        <Route path="/" element={<Home />}/>
+        <Route path="/pizza" element={<Pizza addToCart={addToCart} />} />
         <Route path="/cart" element={<Cart cartItems={cartItems} removeFromCart={removeFromCart} />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
