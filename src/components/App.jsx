@@ -19,9 +19,9 @@ export const App = () => {
     <Router>
       <Header/>
       <Routes>
-        <Route path="/pizza" element={<Pizza addToCart={addToCart} />} />
+        <Route path="/" element={<Pizza addToCart={addToCart} />} />
         <Route path="/cart" element={<Cart cartItems={cartItems} removeFromCart={removeFromCart} />} />
-        <Route path="*" element={<Navigate to="/pizza" />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
   );
