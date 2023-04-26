@@ -1,5 +1,6 @@
 import s from './Cart.module.scss';
 import { Link } from 'react-router-dom';
+import { BsTrash3 } from "react-icons/bs";
 
 function Cart({ cartItems, removeFromCart }) {
   const handleRemoveFromCart = (item) => {
@@ -25,7 +26,7 @@ function Cart({ cartItems, removeFromCart }) {
               <p className={s.pizzaListItem__description}>{item.description}</p>
                 <div className={s.pizzaListItem__priceContainer}>
                   <p className={s.pizzaListItem__price}>${item.price}</p>
-                  <button type='button' className={s.pizzaListItem__btn} onClick={() => handleRemoveFromCart(item)}>Remove from cart</button>
+                  <button type='button' className={s.pizzaListItem__btn} onClick={() => handleRemoveFromCart(item)}><BsTrash3 className={s.pizzaListItem__btnSVG} /></button>
                 </div>
             </div>
           </li>

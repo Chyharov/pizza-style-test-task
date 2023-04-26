@@ -1,3 +1,22 @@
+@import '../../sass/utils/mixin';
+
+.header {
+  width: 100%;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  background-color: var(--secondaryTextColor);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  @include mq(tab) {
+
+  }
+
+ &--active {
+    composes: header;
+  }
+}
+
 .navList {
     display: flex;
     align-items: center;

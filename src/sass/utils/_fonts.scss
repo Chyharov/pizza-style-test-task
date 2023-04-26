@@ -1,23 +1,18 @@
+// 400
 @font-face {
-  font-family: 'OpenSans Regular';
-  src: local('OpenSans Regular'), local('OpenSans-Regular'),
-    url('../../fonts/OpenSans-Regular.ttf') format('truetype');
-  font-weight: 400;
+  font-family: 'Open Sans Regular';
+  src: url('../../fonts/OpenSans-Regular.ttf');
   font-style: normal;
 }
-
+// 500
 @font-face {
-  font-family: 'OpenSans Medium';
-  src: local('OpenSans Medium'), local('OpenSans-Medium'),
-    url('../../fonts/OpenSans-Medium.ttf') format('truetype');
-  font-weight: 500;
+  font-family: 'Open Sans Medium';
+  src: url('../../fonts/OpenSans-Medium.ttf');
   font-style: normal;
 }
-
+// 600
 @font-face {
-  font-family: 'OpenSans SemiBold';
-  src: local('OpenSans SemiBold'), local('OpenSans-SemiBold'),
-    url('../../fonts/OpenSans-SemiBold.ttf') format('truetype');
-  font-weight: 600;
+  font-family: 'Open Sans SemiBold';
+  src: url('../../fonts/OpenSans-SemiBold.ttf');
   font-style: normal;
 }

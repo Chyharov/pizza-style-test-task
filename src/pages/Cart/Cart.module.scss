@@ -34,7 +34,7 @@
 }
 
 .pizzaList {
-    padding-top: 10px;
+    padding-top: 80px;
     padding-bottom: 10px;
 }
 
@@ -68,9 +68,14 @@
 
 .pizzaListItem__btn {
     cursor: pointer;
-    color: var(--secondaryTextColor);
-    background-color: var(--buttonColor);
+    background-color: var(--secondaryTextColor);
     padding: 7px;
     border-radius: 15px;
     border: none;
+    width: 30px;
+    height: 30px;
+}
+
+.pizzaListItem__btnSVG {
+    fill: var(--primaryTextColor);
 }
