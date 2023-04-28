@@ -33,20 +33,22 @@ export const App = () => {
   };
 
   return (
-    <Router>
+    <Router basename="/pizza-style-test-task">
+
       <Header cartItemCount={getCartItemCount()} />
+
       <Routes>
+
+        <Route path="/" element={<Pizza addToCart={addToCart} removeFromCart={removeFromCart} cartItemCount={getCartItemCount()} />} />
+
+        <Route path="/cart" element={<Cart cartItems={cartItems} addToCart={addToCart} removeFromCart={removeFromCart} cartItemCount={getCartItemCount()} />} />
+
         <Route path="/home" element={<Home />} />
-        <Route
-          path="/pizza"
-          element={<Pizza addToCart={addToCart} removeFromCart={removeFromCart} cartItemCount={getCartItemCount()} />}
-        />
-        <Route
-          path="/cart"
-          element={<Cart cartItems={cartItems} addToCart={addToCart} removeFromCart={removeFromCart} cartItemCount={getCartItemCount()} />}
-        />
+
         <Route path="*" element={<Navigate to="/home" />} />
+
       </Routes>
+      
     </Router>
   );
 };
