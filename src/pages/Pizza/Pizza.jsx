@@ -1,37 +1,9 @@
 import s from './Pizza.module.scss'
 import { BsCartFill, BsPlus, BsDash } from "react-icons/bs";
 import { products } from '../../services/Products';
-import { useState } from "react";
 
-function Pizza({ addToCart, removeFromCart }) {
-  const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || {});
-
-  const handleAddToCart = (pizza) => {
-    setCart((prevCart) => {
-      const newCart = { ...prevCart };
-      newCart[pizza.id] = newCart[pizza.id] ? newCart[pizza.id] + 1 : 1;
-      addToCart(pizza);
-      localStorage.setItem('cart', JSON.stringify(newCart));
-      return newCart;
-    });
-  };
-
-  const handleRemoveFromCart = (pizza) => {
-    setCart((prevCart) => {
-      const newCart = { ...prevCart };
-      if (newCart[pizza.id] > 0) {
-        newCart[pizza.id] -= 1;
-        removeFromCart(pizza);
-        localStorage.setItem('cart', JSON.stringify(newCart));
-      }
-      return newCart;
-    });
-  };
-
-  const getCartItemQuantity = (pizza) => {
-    return cart[pizza.id] || 0;
-  };
-
+function Pizza({ handleAddToCart, handleRemoveFromCart, getCartItemQuantity }) {
+  
   return (
     <div className='container'>
       <ul className={s.pizzaList}>
@@ -42,11 +14,11 @@ function Pizza({ addToCart, removeFromCart }) {
                 <p className={s.pizzaListItem__title}>{pizza.title}</p>
                 <p className={s.pizzaListItem__description}>{pizza.description}</p>
                 <div className={s.pizzaListItem__priceContainer}>
-                  <p className={s.pizzaListItem__price}>${pizza.price}</p>
+                  <p className={s.pizzaListItem__price}>{pizza.price} UAH</p>
                   {getCartItemQuantity(pizza) > 0 ? (
                     <div className={s.pizzaListItem__cartControls}>
                       <button className={s.pizzaListItem__cartButton} onClick={() => handleRemoveFromCart(pizza)}><BsDash/></button>
-                      <span className={s.pizzaListItem__cartQuantity}>{getCartItemQuantity(pizza)}</span>
+                        <span className={s.pizzaListItem__cartQuantity}>{getCartItemQuantity(pizza)}</span>
                       <button className={s.pizzaListItem__cartButton} onClick={() => handleAddToCart(pizza)}><BsPlus/></button>
                     </div>
                   ) : (
