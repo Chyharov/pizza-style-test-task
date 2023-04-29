@@ -17,12 +17,12 @@ function Pizza({ handleAddToCart, handleRemoveFromCart, getCartItemQuantity }) {
                   <p className={s.pizzaListItem__price}>{pizza.price} UAH</p>
                   {getCartItemQuantity(pizza) > 0 ? (
                     <div className={s.pizzaListItem__cartControls}>
-                      <button className={s.pizzaListItem__cartButton} onClick={() => handleRemoveFromCart(pizza)}><BsDash/></button>
+                      <button type="button" className={s.pizzaListItem__cartButton} onClick={() => handleRemoveFromCart(pizza)}><BsDash className={s.pizzaListItem__cartButtonSvg}/></button>
                         <span className={s.pizzaListItem__cartQuantity}>{getCartItemQuantity(pizza)}</span>
-                      <button className={s.pizzaListItem__cartButton} onClick={() => handleAddToCart(pizza)}><BsPlus/></button>
+                      <button type="button" className={s.pizzaListItem__cartButton} onClick={() => handleAddToCart(pizza)}><BsPlus className={s.pizzaListItem__cartButtonSvg}/></button>
                     </div>
                   ) : (
-                    <button type='button' className={s.pizzaListItem__btn} onClick={() => handleAddToCart(pizza)}><BsCartFill/> Add to cart</button>
+                    <button type="button" className={s.pizzaListItem__btn} onClick={() => handleAddToCart(pizza)}><BsCartFill/> Add to cart</button>
                   )}
                 </div>
             </div>

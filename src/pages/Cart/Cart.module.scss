@@ -3,7 +3,6 @@
 .cart__container {
     height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -20,7 +19,6 @@
 
 .pizzaListItem {
     display: flex;
-    flex-direction: column;
     align-content: center;
     justify-content: center;
     align-items: center;
@@ -39,8 +37,7 @@
 }
 
 .pizzaListItem__image {
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    border-radius: 15px;
 }
 
 .pizzaListItem__container {
@@ -96,5 +93,47 @@
     padding: 7px;
     border-radius: 15px;
     border: none;
+}
+
+.pizzaListItem__cartControls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(228, 228, 228);
+    border-radius: 15px;
+    padding: 2px;
+    height: 34px;
+}
+
+.pizzaListItem__cartButton {
+    width: 30px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(228, 228, 228);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pizzaListItem__cartButtonTrash {
+    width: 30px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+    background-color: var(--secondaryTextColor);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pizzaListItem__cartButtonSvg {
+    width: 24px;
+    height: 24px;
+  }
+
+.pizzaListItem__cartQuantity {
+    padding: 0 10px;
 }
     

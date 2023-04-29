@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div className={'container ' + s.home__container}>
       <h1 className={s.home}>Welcome to PizzaStyle </h1>
-      <button type='button' className={s.home__btn}><Link to="/">Enjoy Pizza</Link></button>
+      <button type="button" className={s.home__btn}><Link to="/">Enjoy Pizza</Link></button>
     </div>
   );
 };
