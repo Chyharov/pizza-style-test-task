@@ -8,9 +8,6 @@
   z-index: 1;
   background-color: var(--secondaryTextColor);
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-  @include mq(tab) {
-
-  }
 
  &--active {
     composes: header;
@@ -26,6 +23,11 @@
 .header__container {
     padding-top: 10px;
     padding-bottom: 10px;
+
+    @include mq(tab) {
+      padding-right: 75px;
+      padding-left: 75px;
+    }
 }
 
 .cartLogo {
