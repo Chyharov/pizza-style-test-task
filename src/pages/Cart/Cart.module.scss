@@ -26,17 +26,42 @@
     padding: 10px;
     margin-bottom: 20px;
     border-radius: 15px;
-    border: 1px solid rgba(0, 0, 0, 0.06);
     
     @include mq(mob) {
         max-width: 280px;
     }
+
+    @include mq(tab) {
+        max-width: 700px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 20px;
+    }
+
+    @include mq(desk) {
+        max-width: 1000px;
+    }
 }
+
+.pizzaListItem {
+    &:hover {
+    outline: 1px solid rgba(238, 238, 238, 10);
+      .pizzaListItem__image {
+        transform: scale(1.25);
+        transition: transform 0.3s ease-in-out;
+      }
+    }
+  }
 
 .pizzaListItem__info {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+
+    @include mq(tab) {
+        width: 400px;
+    }
 }
 
 .pizzaList {
@@ -49,6 +74,12 @@
     height: 100px;
     border-radius: 15px;
     margin-right: 10px;
+
+    @include mq(tab) {
+    width: 150px;
+    height: 150px;
+    margin-right: 20px;
+    }
 }
 
 .pizzaListItem__container {
@@ -61,23 +92,66 @@
     text-align: start;
     font-size: 17px;
     margin-bottom: 10px;
+
+    @include mq(tab) {
+        text-align: center;
+        font-size: 25px;
+        margin-bottom: 20px;
+    }
+    
 }
 
 .pizzaListItem__description {
     font-family: 'Open Sans Regular';
     text-align: start;
     font-size: 12px;
+
+    @include mq(tab) {
+        text-align: center;
+        font-size: 17px;
+    }
 }
 
 .pizzaListItem__priceContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
+
+    @include mq(mob) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    @include mq(tab) {
+        display: flex;
+        align-items: center;
+        width: 110px;
+        flex-direction: column;
+        justify-content: space-between;
+        }
+
+    @include mq(desk) {
+        display: flex;
+        align-items: center;
+
+        flex-direction: column;
+        justify-content: space-between;
+        }
 }
 
 .pizzaListItem__price {
     color: var(--primaryTextColor);
+    font-family: 'Open Sans Regular';
+    font-size: 17px;
+
+    @include mq(tab) {
+        font-size: 22px;
+
+        }
+    
+    @include mq(desk) {
+        font-size: 25px;
+
+        }
 }
 
 .pizzaListItem__btn {
@@ -88,6 +162,7 @@
     border: none;
     width: 30px;
     height: 30px;
+
 }
 
 .pizzaListItem__btnSVG {
@@ -101,8 +176,24 @@
     padding: 10px 0;
 }
 
+.totalPrice {
+    font-family: 'Open Sans Regular';
+    font-size: 17px;
+
+    @include mq(tab) {
+        font-size: 22px;
+        padding: 10px;
+        }
+    
+    @include mq(desk) {
+        font-size: 25px;
+        padding: 15px;
+        }
+
+}
+
 .orderButton {
-    font-family: Open Sans Regular;
+    font-family: 'Open Sans Regular';
     font-size: 17px;
     cursor: pointer;
     color: var(--secondaryTextColor);
@@ -110,6 +201,17 @@
     padding: 7px;
     border-radius: 15px;
     border: none;
+
+    @include mq(tab) {
+        font-size: 22px;
+        padding: 10px;
+        }
+    
+    @include mq(desk) {
+        font-size: 25px;
+        padding: 15px;
+        }
+    
 }
 
 .pizzaListItem__cartControls {
@@ -120,6 +222,15 @@
     border-radius: 15px;
     padding: 2px;
     height: 34px;
+
+    @include mq(tab) {
+        width: 104px;
+        height: 44px;
+        }
+    
+    @include mq(desk) {
+
+        }
 }
 
 .pizzaListItem__cartButton {
@@ -143,6 +254,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @include mq(tab) {
+        width: 40px;
+        height: 40px;
+        }
+    
+    @include mq(desk) {
+        width: 30px;
+        height: 30px;
+        }
 }
 
 .pizzaListItem__cartButtonSvg {
