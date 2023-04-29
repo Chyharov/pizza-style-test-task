@@ -6,23 +6,8 @@ import Cart from 'pages/Cart/Cart';
 import Home from 'pages/Home/Home';
 
 export const App = () => {
-  const [cartItems, setCartItems] = useState(() => {
-    const storedCartItems = localStorage.getItem('cartItems');
-    return storedCartItems ? JSON.parse(storedCartItems) : [];
-  });
-
-  const [cart, setCart] = useState(() => {
-    const storedCart = localStorage.getItem('cart');
-    return storedCart ? JSON.parse(storedCart) : {};
-  });
-
-  const addToCart = useCallback((item) => {
-    setCartItems((prevCartItems) => [...prevCartItems, item]);
-  }, []);
-
-  const removeFromCart = useCallback(() => {
-    setCartItems((prevCartItems) => prevCartItems.slice(0, prevCartItems.length - 1));
-  }, []);
+  const [cartItems, setCartItems] = useState(() => JSON.parse(localStorage.getItem('cartItems')) || []);
+  const [cart, setCart] = useState(() => JSON.parse(localStorage.getItem('cart')) || {});
 
   const getCartItemCount = useCallback(() => {
     const cartItemCount = cartItems.length;
@@ -30,71 +15,73 @@ export const App = () => {
     return cartItemCount;
   }, [cartItems]);
 
-  const getCartItemQuantity = useCallback((pizza) => {
-    return cart[pizza.id] || 0;
-  }, [cart]);
+  const getCartItemQuantity = useCallback(pizza => cart[pizza.id] || 0, [cart]);
 
-  const handleAddToCart = useCallback((pizza) => {
+  const updateCart = useCallback((pizza, quantity) => {
     setCart((prevCart) => {
       const newCart = { ...prevCart };
-      newCart[pizza.id] = newCart[pizza.id] ? newCart[pizza.id] + 1 : 1;
-      addToCart(pizza);
+      if (quantity <= 0) {
+        delete newCart[pizza.id];
+      } else {
+        newCart[pizza.id] = quantity;
+      }
       localStorage.setItem('cart', JSON.stringify(newCart));
       return newCart;
     });
-  }, [addToCart]);
+  }, []);
+
+  const handleAddToCart = useCallback((pizza) => {
+    setCartItems((prevCartItems) => [...prevCartItems, pizza]);
+    updateCart(pizza, getCartItemQuantity(pizza) + 1);
+  }, [getCartItemQuantity, updateCart]);
 
   const handleRemoveFromCart = useCallback((pizza) => {
-    setCart((prevCart) => {
-      const newCart = { ...prevCart };
-      if (newCart[pizza.id] > 0) {
-        newCart[pizza.id] -= 1;
-        removeFromCart(pizza);
-        localStorage.setItem('cart', JSON.stringify(newCart));
-      }
-      return newCart;
+    updateCart(pizza, getCartItemQuantity(pizza) - 1);
+    setCartItems((prevCartItems) => {
+      const index = prevCartItems.findIndex((cartItem) => cartItem.id === pizza.id);
+      if (index < 0) return prevCartItems;
+      const newCartItems = [...prevCartItems];
+      newCartItems.splice(index, 1);
+      return newCartItems;
     });
-  }, [removeFromCart]);
-
-  const [totalPrice, setTotalPrice] = useState(0);
+  }, [getCartItemQuantity, updateCart]);
 
   useEffect(() => {
     let price = 0;
     cartItems.forEach((item) => {
       price += item.price;
     });
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
     setTotalPrice(price);
-  }, [cartItems, getCartItemQuantity]);
+  }, [cartItems]);
 
-  function handleClearCart() {
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  const handleClearCart = useCallback(() => {
     localStorage.removeItem('cart');
     localStorage.removeItem('cartItems');
     setCart({});
     setCartItems([]);
-  }
+  }, []);
 
   const removeFromCartItem = useCallback((item) => {
     setCartItems((prevCartItems) => prevCartItems.filter((cartItem) => cartItem.id !== item.id));
     setCart((prevCart) => {
       const newCart = { ...prevCart };
       if (newCart[item.id] > 0) {
-        newCart[item.id] = 0;
+        newCart[item.id] = -1;
         localStorage.setItem('cart', JSON.stringify(newCart));
       }
       return newCart;
     });
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
-  }, [cartItems]);
-
   return (
     <Router basename="/pizza-style-test-task">
       <Header cartItemCount={getCartItemCount()} />
       <Routes>
         <Route path="/" element={<Pizza handleAddToCart={handleAddToCart} handleRemoveFromCart={handleRemoveFromCart} getCartItemQuantity={getCartItemQuantity} />} />
-        <Route path="/cart" element={<Cart cartItems={cartItems} handleAddToCart={handleAddToCart} handleRemoveFromCart={handleRemoveFromCart} getCartItemQuantity={getCartItemQuantity} totalPrice={totalPrice} handleClearCart={handleClearCart} removeFromCartItem={removeFromCartItem}/>} />
+        <Route path="/cart" element={<Cart cartItems={cartItems} handleAddToCart={handleAddToCart} handleRemoveFromCart={handleRemoveFromCart} getCartItemQuantity={getCartItemQuantity} totalPrice={totalPrice} handleClearCart={handleClearCart} removeFromCartItem={removeFromCartItem} />} />
         <Route path="/home" element={<Home />} />
         <Route path="*" element={<Navigate to="/home" />} />
       </Routes>

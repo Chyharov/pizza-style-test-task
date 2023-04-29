@@ -41,6 +41,7 @@ function Cart({ cartItems, handleRemoveFromCart, handleAddToCart, getCartItemQua
                   <p className={s.pizzaListItem__price}>{item.price * getCartItemQuantity(item)} UAH</p>
 
                   <button type="button" className={s.pizzaListItem__cartButtonTrash} onClick={() => removeFromCartItem(item)}>
+                    
                     <BsTrash className={s.pizzaListItem__cartButtonSvg}/>
                   </button>
                 
