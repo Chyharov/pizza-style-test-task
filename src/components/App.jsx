@@ -4,6 +4,7 @@ import Header from './Header/Header';
 import Pizza from 'pages/Pizza/Pizza';
 import Cart from 'pages/Cart/Cart';
 import Home from 'pages/Home/Home';
+import Footer from './Footer/Footer';
 
 export const App = () => {
   const [cartItems, setCartItems] = useState(() => JSON.parse(localStorage.getItem('cartItems')) || []);
@@ -85,6 +86,7 @@ export const App = () => {
         <Route path="/home" element={<Home />} />
         <Route path="*" element={<Navigate to="/home" />} />
       </Routes>
+      <Footer />
     </Router>
   );
 };

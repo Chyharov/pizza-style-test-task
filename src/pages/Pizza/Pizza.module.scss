@@ -35,23 +35,20 @@
 
     @include mq(mob) {
         max-width: 280px;
-        height: 450px;
     }
 
     @include mq(tab) {
         max-width: 280px;
-        height: 450px;
     }
 
     @include mq(desk) {
         max-width: 280px;
-        height: 450px;
     }
 }
 
 .pizzaListItem {
     &:hover {
-    outline: 1px solid rgba(238, 238, 238, 10);
+        box-shadow: 0px 2px 4px 0px #888;
       .pizzaListItem__image {
         transform: scale(1.08);
         transition: transform 0.3s ease-in-out;
@@ -60,7 +57,7 @@
   }
 
 .pizzaList {
-    padding-top: 80px;
+    padding-top: 90px;
     padding-bottom: 10px;
 }
 
@@ -80,6 +77,7 @@
     font-family: 'Open Sans Regular';
     font-size: 15px;
     margin-bottom: 20px;
+    height: 52px;
 }
 
 .pizzaListItem__priceContainer {

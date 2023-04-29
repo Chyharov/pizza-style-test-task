@@ -27,6 +27,7 @@
     margin-bottom: 20px;
     border-radius: 15px;
     
+    
     @include mq(mob) {
         max-width: 280px;
     }
@@ -40,13 +41,14 @@
     }
 
     @include mq(desk) {
-        max-width: 1000px;
+        max-width: 1100px;
+        padding: 30px;
     }
 }
 
 .pizzaListItem {
     &:hover {
-    outline: 1px solid rgba(238, 238, 238, 10);
+        box-shadow: 0px 2px 4px 0px #888;
       .pizzaListItem__image {
         transform: scale(1.25);
         transition: transform 0.3s ease-in-out;
@@ -60,13 +62,22 @@
     justify-content: flex-start;
 
     @include mq(tab) {
-        width: 400px;
+        width: 500px;
+        margin-right: 20px;
+    }
+
+    @include mq(desk) {
+        width: 800px;
+        margin-right: 30px;
     }
 }
 
 .pizzaList {
-    padding-top: 80px;
+    padding-top: 90px;
     padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .pizzaListItem__image {
@@ -79,6 +90,12 @@
     width: 150px;
     height: 150px;
     margin-right: 20px;
+    }
+
+    @include mq(desk) {
+    width: 200px;
+    height: 200px;
+    margin-right: 30px;
     }
 }
 
@@ -98,6 +115,12 @@
         font-size: 25px;
         margin-bottom: 20px;
     }
+
+    @include mq(desk) {
+        text-align: center;
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
     
 }
 
@@ -109,6 +132,11 @@
     @include mq(tab) {
         text-align: center;
         font-size: 17px;
+    }
+
+    @include mq(desk) {
+        text-align: center;
+        font-size: 25px;
     }
 }
 
@@ -132,7 +160,7 @@
     @include mq(desk) {
         display: flex;
         align-items: center;
-
+        width: 150px;
         flex-direction: column;
         justify-content: space-between;
         }
@@ -149,7 +177,7 @@
         }
     
     @include mq(desk) {
-        font-size: 25px;
+        font-size: 30px;
 
         }
 }
@@ -182,12 +210,10 @@
 
     @include mq(tab) {
         font-size: 22px;
-        padding: 10px;
         }
     
     @include mq(desk) {
         font-size: 25px;
-        padding: 15px;
         }
 
 }
@@ -229,7 +255,9 @@
         }
     
     @include mq(desk) {
-
+        width: 154px;
+        height: 54px;
+        justify-content: space-evenly;
         }
 }
 
@@ -261,8 +289,8 @@
         }
     
     @include mq(desk) {
-        width: 30px;
-        height: 30px;
+        width: 50px;
+        height: 50px;
         }
 }
 

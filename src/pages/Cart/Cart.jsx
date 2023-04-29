@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom';
 import { BsPlus, BsDash, BsTrash } from 'react-icons/bs';
 import s from './Cart.module.scss';
+import Button from 'components/Button/Button';
 
 function Cart({ cartItems, handleRemoveFromCart, handleAddToCart, getCartItemQuantity, totalPrice, handleClearCart, removeFromCartItem }) {
   
   if (cartItems.length === 0) {
     return (
       <div className={`container ${s.cart__container}`}>
-        <h1>Please choose pizza <Link to="/"><button type="button" className={s.cart__hereBtn}>here</button></Link></h1>
+        <h1>Please choose pizza <Link to="/"><Button text="here" ></Button></Link></h1>
       </div>
     );
   }
@@ -38,14 +39,14 @@ function Cart({ cartItems, handleRemoveFromCart, handleAddToCart, getCartItemQua
                 </div>
 
                 <div className={s.pizzaListItem__priceContainer}>
+
                   <p className={s.pizzaListItem__price}>{item.price * getCartItemQuantity(item)} UAH</p>
 
                   <button type="button" className={s.pizzaListItem__cartButtonTrash} onClick={() => removeFromCartItem(item)}>
-                    
                     <BsTrash className={s.pizzaListItem__cartButtonSvg}/>
                   </button>
                 
-                    
+          
                   <div className={s.pizzaListItem__cartControls}>
 
                     <button type="button" className={s.pizzaListItem__cartButton} onClick={() => handleRemoveFromCart(item)}>
@@ -66,9 +67,7 @@ function Cart({ cartItems, handleRemoveFromCart, handleAddToCart, getCartItemQua
       </ul>
       <div className={s.totalContainer}>
         <p className={s.totalPrice}>Total: {totalPrice} UAH</p>
-        <button type="button" className={s.orderButton} onClick={handleClearCart}>
-          Make an order
-        </button>
+        <Button text="Make an order" onClick={handleClearCart} />
       </div>
     </div>
   );

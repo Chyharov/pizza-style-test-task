@@ -2,7 +2,7 @@ import s from './Pizza.module.scss'
 import { BsCartFill, BsPlus, BsDash } from "react-icons/bs";
 import { products } from '../../services/Products';
 
-function Pizza({ handleAddToCart, handleRemoveFromCart, getCartItemQuantity, removeFromCartItem }) {
+function Pizza({ handleAddToCart, handleRemoveFromCart, getCartItemQuantity }) {
   
   return (
     <div className='container'>
@@ -22,7 +22,7 @@ function Pizza({ handleAddToCart, handleRemoveFromCart, getCartItemQuantity, rem
                       <button type="button" className={s.pizzaListItem__cartButton} onClick={() => handleAddToCart(pizza)}><BsPlus className={s.pizzaListItem__cartButtonSvg}/></button>
                     </div>
                   ) : (
-                    <button type="button" className={s.pizzaListItem__btn} onClick={() => handleAddToCart(pizza)}><BsCartFill/> Add to cart</button>
+                    <button type="button" className={s.pizzaListItem__btn} onClick={() => handleAddToCart(pizza)}>Add to cart <BsCartFill/></button>
                   )}
                 </div>
             </div>
