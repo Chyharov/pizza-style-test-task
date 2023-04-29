@@ -11,8 +11,10 @@ export const App = () => {
     return storedCartItems ? JSON.parse(storedCartItems) : [];
   });
 
-  const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || {});
-  const [totalPrice, setTotalPrice] = useState(0);
+  const [cart, setCart] = useState(() => {
+    const storedCart = localStorage.getItem('cart');
+    return storedCart ? JSON.parse(storedCart) : {};
+  });
 
   const addToCart = useCallback((item) => {
     setCartItems((prevCartItems) => [...prevCartItems, item]);
@@ -54,6 +56,8 @@ export const App = () => {
     });
   }, [removeFromCart]);
 
+  const [totalPrice, setTotalPrice] = useState(0);
+
   useEffect(() => {
     let price = 0;
     cartItems.forEach((item) => {
@@ -69,24 +73,28 @@ export const App = () => {
     setCartItems([]);
   }
 
-  const removeCartItem = useCallback((item) => {
+  const removeFromCartItem = useCallback((item) => {
     setCartItems((prevCartItems) => prevCartItems.filter((cartItem) => cartItem.id !== item.id));
     setCart((prevCart) => {
       const newCart = { ...prevCart };
       if (newCart[item.id] > 0) {
-        newCart[item.id] -= 1;
+        newCart[item.id] = 0;
         localStorage.setItem('cart', JSON.stringify(newCart));
       }
       return newCart;
     });
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }, [cartItems]);
+
   return (
     <Router basename="/pizza-style-test-task">
       <Header cartItemCount={getCartItemCount()} />
       <Routes>
-        <Route path="/" element={<Pizza handleAddToCart={handleAddToCart} handleRemoveFromCart={handleRemoveFromCart} getCartItemQuantity={getCartItemQuantity}/>} />
-        <Route path="/cart" element={<Cart cartItems={cartItems} handleAddToCart={handleAddToCart} handleRemoveFromCart={handleRemoveFromCart} getCartItemQuantity={getCartItemQuantity} totalPrice={totalPrice} handleClearCart={handleClearCart} removeCartItem={removeCartItem}/>} />
+        <Route path="/" element={<Pizza handleAddToCart={handleAddToCart} handleRemoveFromCart={handleRemoveFromCart} getCartItemQuantity={getCartItemQuantity} />} />
+        <Route path="/cart" element={<Cart cartItems={cartItems} handleAddToCart={handleAddToCart} handleRemoveFromCart={handleRemoveFromCart} getCartItemQuantity={getCartItemQuantity} totalPrice={totalPrice} handleClearCart={handleClearCart} removeFromCartItem={removeFromCartItem}/>} />
         <Route path="/home" element={<Home />} />
         <Route path="*" element={<Navigate to="/home" />} />
       </Routes>

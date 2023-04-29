@@ -2,7 +2,7 @@ import s from './Pizza.module.scss'
 import { BsCartFill, BsPlus, BsDash } from "react-icons/bs";
 import { products } from '../../services/Products';
 
-function Pizza({ handleAddToCart, handleRemoveFromCart, getCartItemQuantity }) {
+function Pizza({ handleAddToCart, handleRemoveFromCart, getCartItemQuantity, removeFromCartItem }) {
   
   return (
     <div className='container'>
