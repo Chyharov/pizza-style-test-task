@@ -225,6 +225,14 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 0;
+
+    @include mq(tab) {
+        padding: 20px 0;
+    }
+
+    @include mq(desk) {
+        padding: 30px 0;
+    }
 }
 
 .totalPrice {
