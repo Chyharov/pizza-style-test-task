@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/pizza-style-test-task/static/css/main.5b0b79ac.css",
-    "main.js": "/pizza-style-test-task/static/js/main.7767cacb.js",
+    "main.css": "/pizza-style-test-task/static/css/main.dbcf60d3.css",
+    "main.js": "/pizza-style-test-task/static/js/main.1b8d5639.js",
     "static/media/OpenSans-Regular.ttf": "/pizza-style-test-task/static/media/OpenSans-Regular.77c09223204154ae8d43.ttf",
     "static/media/OpenSans-SemiBold.ttf": "/pizza-style-test-task/static/media/OpenSans-SemiBold.2f17aae884058c5a85df.ttf",
     "static/media/OpenSans-Medium.ttf": "/pizza-style-test-task/static/media/OpenSans-Medium.1f00128ef6182eecdfe2.ttf",
     "index.html": "/pizza-style-test-task/index.html",
-    "main.5b0b79ac.css.map": "/pizza-style-test-task/static/css/main.5b0b79ac.css.map",
-    "main.7767cacb.js.map": "/pizza-style-test-task/static/js/main.7767cacb.js.map"
+    "main.dbcf60d3.css.map": "/pizza-style-test-task/static/css/main.dbcf60d3.css.map",
+    "main.1b8d5639.js.map": "/pizza-style-test-task/static/js/main.1b8d5639.js.map"
   },
   "entrypoints": [
-    "static/css/main.5b0b79ac.css",
-    "static/js/main.7767cacb.js"
+    "static/css/main.dbcf60d3.css",
+    "static/js/main.1b8d5639.js"
   ]
 }
