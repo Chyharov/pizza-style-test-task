@@ -5,10 +5,13 @@ import Pizza from 'pages/Pizza/Pizza';
 import Cart from 'pages/Cart/Cart';
 import Home from 'pages/Home/Home';
 import Footer from './Footer/Footer';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const App = () => {
   const [cartItems, setCartItems] = useState(() => JSON.parse(localStorage.getItem('cartItems')) || []);
   const [cart, setCart] = useState(() => JSON.parse(localStorage.getItem('cart')) || {});
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const getCartItemCount = useCallback(() => {
     const cartItemCount = cartItems.length;
@@ -56,8 +59,6 @@ export const App = () => {
     setTotalPrice(price);
   }, [cartItems]);
 
-  const [totalPrice, setTotalPrice] = useState(0);
-
   const handleClearCart = useCallback(() => {
     localStorage.removeItem('cart');
     localStorage.removeItem('cartItems');
@@ -77,16 +78,30 @@ export const App = () => {
     });
   }, []);
 
+  const handleToast = () => {
+    toast("🍕 Your pizza is already on its way to you", {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    });
+  }
+  
   return (
     <Router basename="/pizza-style-test-task">
       <Header cartItemCount={getCartItemCount()} />
       <Routes>
         <Route path="/" element={<Pizza handleAddToCart={handleAddToCart} handleRemoveFromCart={handleRemoveFromCart} getCartItemQuantity={getCartItemQuantity} />} />
-        <Route path="/cart" element={<Cart cartItems={cartItems} handleAddToCart={handleAddToCart} handleRemoveFromCart={handleRemoveFromCart} getCartItemQuantity={getCartItemQuantity} totalPrice={totalPrice} handleClearCart={handleClearCart} removeFromCartItem={removeFromCartItem} />} />
+        <Route path="/cart" element={<Cart cartItems={cartItems} handleAddToCart={handleAddToCart} handleRemoveFromCart={handleRemoveFromCart} getCartItemQuantity={getCartItemQuantity} totalPrice={totalPrice} handleClearCart={handleClearCart} removeFromCartItem={removeFromCartItem} handleToast={handleToast}/>} />
         <Route path="/home" element={<Home />} />
         <Route path="*" element={<Navigate to="/home" />} />
       </Routes>
       <Footer />
+      <ToastContainer/>
     </Router>
   );
 };
