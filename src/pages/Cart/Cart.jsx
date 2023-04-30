@@ -7,14 +7,14 @@ function Cart({ cartItems, handleRemoveFromCart, handleAddToCart, getCartItemQua
   
   if (cartItems.length === 0) {
     return (
-      <div className={`container ${s.cart__container}`}>
+      <div className={`container ${s.cart__contaner_choose}`}>
         <h1>Please choose pizza <Link to="/"><Button text="here" ></Button></Link></h1>
       </div>
     );
   }
 
   return (
-    <div className="container">
+    <div className={`container ${s.cart__container}`}>
       <ul className={s.pizzaList}>
         {cartItems.map((item, index) => {
           const itemIndex = cartItems.findIndex((cartItem) => cartItem.id === item.id);
