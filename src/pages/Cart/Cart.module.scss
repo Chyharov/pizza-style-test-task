@@ -230,9 +230,11 @@
 .totalPrice {
     font-family: 'Open Sans Regular';
     font-size: 17px;
+    padding-right: 5px;
 
     @include mq(tab) {
         font-size: 22px;
+        padding-right: 10px;
         }
     
     @include mq(desk) {

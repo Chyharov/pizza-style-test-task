@@ -21,6 +21,7 @@ function Footer() {
           <li className={s.footer__socailMediaList_Item}><a href="https://twitter.com/" target="_blank" rel="noopener noreferrer nofollow"><BsTwitter className={s.footer__socailMediaList_ItemSVG}/></a></li>
           <li className={s.footer__socailMediaList_Item}><a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer nofollow"><BsLinkedin className={s.footer__socailMediaList_ItemSVG}/></a></li>
         </ul>
+        
       </div>
     </footer>
     
