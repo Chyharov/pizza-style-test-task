@@ -44,13 +44,10 @@ function Cart({ cartItems, handleRemoveFromCart, handleAddToCart, getCartItemQua
                     <BsTrash className={s.pizzaListItem__cartButtonSvg}/>
                   </button>
                   <div className={s.pizzaListItem__cartControls}>
-                    <button type="button" className={s.pizzaListItem__cartButton} onClick={() => handleRemoveFromCart(item)}>
-                      <BsDash className={s.pizzaListItem__cartButtonSvg}/>
-                    </button>
-                      <span className={s.pizzaListItem__cartQuantity}>{getCartItemQuantity(item)}</span>
-                    <button type="button" className={s.pizzaListItem__cartButton} onClick={() =>  handleAddToCart(item)}>
-                      <BsPlus className={s.pizzaListItem__cartButtonSvg}/>
-                    </button>
+                    <button type="button" className={s.pizzaListItem__cartButton_decrement} onClick={() => handleRemoveFromCart(item)}><BsDash className={s.pizzaListItem__cartButtonSvg}/></button>
+                        <span className={s.pizzaListItem__cartQuantity}>{getCartItemQuantity(item)}</span>
+                      <button type="button" className={s.pizzaListItem__cartButton_increment} onClick={() => handleAddToCart(item)}><BsPlus className={s.pizzaListItem__cartButtonSvg}/></button>
+                    
                   </div>
                 </div>
             </li>
