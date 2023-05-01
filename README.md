@@ -15,8 +15,9 @@ install all necessary dependencies using the following commands:
 
 bash
 
-git clone https://github.com/Chyharov/pizza-style-test-task cd
-pizza-style-test-task npm install
+git clone https://github.com/Chyharov/pizza-style-test-task 
+cd pizza-style-test-task 
+npm install
 
 ## Usage
 
