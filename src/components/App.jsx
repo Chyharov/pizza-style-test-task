@@ -94,14 +94,16 @@ export const App = () => {
   return (
     <Router basename="/pizza-style-test-task">
       <Header cartItemCount={getCartItemCount()} />
-      <Routes>
-        <Route path="/" element={<Pizza handleAddToCart={handleAddToCart} handleRemoveFromCart={handleRemoveFromCart} getCartItemQuantity={getCartItemQuantity} />} />
-        <Route path="/cart" element={<Cart cartItems={cartItems} handleAddToCart={handleAddToCart} handleRemoveFromCart={handleRemoveFromCart} getCartItemQuantity={getCartItemQuantity} totalPrice={totalPrice} handleClearCart={handleClearCart} removeFromCartItem={removeFromCartItem} handleToast={handleToast}/>} />
-        <Route path="/home" element={<Home />} />
-        <Route path="*" element={<Navigate to="/home" />} />
-      </Routes>
+        <main>
+          <Routes>
+            <Route path="/" element={<Pizza handleAddToCart={handleAddToCart} handleRemoveFromCart={handleRemoveFromCart} getCartItemQuantity={getCartItemQuantity} />} />
+            <Route path="/cart" element={<Cart cartItems={cartItems} handleAddToCart={handleAddToCart} handleRemoveFromCart={handleRemoveFromCart} getCartItemQuantity={getCartItemQuantity} totalPrice={totalPrice} handleClearCart={handleClearCart} removeFromCartItem={removeFromCartItem} handleToast={handleToast}/>} />
+            <Route path="/home" element={<Home />} />
+            <Route path="*" element={<Navigate to="/home" />} />
+          </Routes>
+        </main>
       <Footer />
-      <ToastContainer/>
+      <ToastContainer />
     </Router>
   );
 };
