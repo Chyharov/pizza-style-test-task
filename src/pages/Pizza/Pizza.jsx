@@ -19,12 +19,12 @@ function Pizza({ handleAddToCart, handleRemoveFromCart, getCartItemQuantity }) {
                   <p className={s.pizzaListItem__price}>{pizza.price} UAH</p>
                   {getCartItemQuantity(pizza) > 0 ? (
                     <div className={s.pizzaListItem__cartControls}>
-                      <button type="button" className={s.pizzaListItem__cartButton_decrement} onClick={() => handleRemoveFromCart(pizza)}><BsDash className={s.pizzaListItem__cartButtonSvg}/></button>
+                      <button type="button" aria-label="Button decrement" className={s.pizzaListItem__cartButton_decrement} onClick={() => handleRemoveFromCart(pizza)}><BsDash aria-label="Decrement icon" className={s.pizzaListItem__cartButtonSvg}/></button>
                         <span className={s.pizzaListItem__cartQuantity}>{getCartItemQuantity(pizza)}</span>
-                      <button type="button" className={s.pizzaListItem__cartButton_increment} onClick={() => handleAddToCart(pizza)}><BsPlus className={s.pizzaListItem__cartButtonSvg}/></button>
+                      <button type="button" aria-label="Button increment" className={s.pizzaListItem__cartButton_increment} onClick={() => handleAddToCart(pizza)}><BsPlus aria-label="Increment icon" className={s.pizzaListItem__cartButtonSvg}/></button>
                     </div>
                   ) : (
-                    <button type="button" className={s.pizzaListItem__btn} onClick={() => handleAddToCart(pizza)}>Add to cart <BsCartFill/></button>
+                    <button type="button" aria-label="Button add to cart" className={s.pizzaListItem__btn} onClick={() => handleAddToCart(pizza)}>Add to cart <BsCartFill aria-label="Add to cart icon"/></button>
                   )}
                 </div>
             </div>
